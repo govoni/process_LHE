@@ -1,4 +1,7 @@
 import pylhe
+import numpy as np
+from math import ceil
+
 
 def read_LHE_file (LHE_file_name) : 
 
@@ -28,4 +31,11 @@ def read_LHE_file (LHE_file_name) :
         events.append (particles)    
     return events
 
+
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+
+def sturges (N_events) :
+    return ceil (1 + 3.322 * np.log (N_events))
+    
 
