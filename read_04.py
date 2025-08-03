@@ -1,6 +1,5 @@
 import sys
 import pylhe
-import pandas as pd
 import vector
 import numpy as np
 import pickle
