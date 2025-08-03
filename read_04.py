@@ -62,9 +62,9 @@ def main () :
 
         v_Z = v_muons[0] + v_muons[1]
         vars.append (v_Z.M)
+        vars.append (v_Z.pt)
         vars.append (v_Z.eta)
         vars.append (v_Z.phi)
-        vars.append (v_Z.pt)
 
         v_dijet = v_jets[0] + v_jets[1]
         vars.append (v_dijet.M)
