@@ -3,13 +3,14 @@ import pylhe
 import pandas as pd
 import vector
 import numpy as np
+import pickle
 
 from utils import read_LHE_file
 
 def main () :
 
-    if len (sys.argv) < 2 :
-        print ('usage: ' + sys.argv[0] + 'input.lhe')
+    if len (sys.argv) < 3 :
+        print ('usage: ' + sys.argv[0] + 'input.lhe ouptut.pkl')
     
     events = read_LHE_file (sys.argv[1])
 
@@ -68,9 +69,9 @@ def main () :
 
         v_dijet = v_jets[0] + v_jets[1]
         vars.append (v_dijet.M)
-        vars.append (v_Z.eta)
-        vars.append (v_Z.phi)
-        vars.append (v_Z.pt)
+        vars.append (v_dijet.pt)
+        vars.append (v_dijet.eta)
+        vars.append (v_dijet.phi)
 
         vars.append (abs (v_jets[0].eta - v_jets[1].eta))
         vars.append (v_jets[0].deltaphi(v_jets[1]))
@@ -84,6 +85,20 @@ def main () :
     print (sample[0])
     np_sample = np.array (sample)
     print (np_sample.shape)
+
+    variables = ['j0_pt', 'j0.eta', 'j0_phi', 
+                 'j1_pt', 'j1.eta', 'j1_phi',
+                 'm0_pt', 'm0.eta', 'm0_phi',
+                 'm1_pt', 'm1.eta', 'm1_phi', 
+                 'z_M', 'z_pt', 'z.eta', 'z_phi',
+                 'jj_M', 'jj_pt', 'jj.eta', 'jj_phi','jj_dEta', 'jj_dPhi', 
+                ] 
+
+    file_content = {'names': variables, 'events': np_sample}
+
+
+    with open (sys.argv[2], 'wb') as f :
+        pickle.dump (file_content, f)
 
     return 0
 
