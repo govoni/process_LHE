@@ -12,9 +12,10 @@
 
 ## TODO
 
-- variable plots
-- save outside the repository in a output folder
-
+- ML testing
+- smearing 
+  (bisogna correggere conseguentemente l'energia totale, 
+   i 4-vec LHE hanno massa invariante non nulla?)
 
 ## NOTES
 
