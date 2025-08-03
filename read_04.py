@@ -2,6 +2,7 @@ import sys
 import pylhe
 import pandas as pd
 import vector
+import numpy as np
 
 from utils import read_LHE_file
 
@@ -81,10 +82,13 @@ def main () :
     print ('processed', len (sample), 'events')
 
     print (sample[0])
+    np_sample = np.array (sample)
+    print (np_sample.shape)
 
     return 0
 
 
+# ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
 
 
 if __name__ == '__main__' :
